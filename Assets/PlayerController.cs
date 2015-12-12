@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -7,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     public float CameraLockTrigger = 0.4f;
     public GameObject Head;
     public float GrowRate;
+    public Text HeightCounter;
 
     float LeftBounds, RightBounds;
     float AxisMin = 0.2f;
@@ -42,6 +44,8 @@ public class PlayerController : MonoBehaviour {
         pos = Vector3.Lerp(pos, pos + moveDirection, GrowRate);
         pos.x = Mathf.Clamp(pos.x, LeftBounds, RightBounds);
         Head.transform.position = pos;
+
+        UpdateHeightCounter(pos.y);
     }
 
     void TryLockCamera() {
@@ -49,5 +53,10 @@ public class PlayerController : MonoBehaviour {
             isCameraLocked = true;
             Camera.main.SendMessage("StartFollowPlayer", Head);
         }
+    }
+
+    void UpdateHeightCounter(float height) {
+        height = height/100.0f; // height will be in cm
+        HeightCounter.text = height.ToString("F2") + " m";
     }
 }
