@@ -10,6 +10,8 @@ GameObject:
   - 4: {fileID: 427478}
   - 212: {fileID: 21285702}
   - 114: {fileID: 11464790}
+  - 60: {fileID: 6082798}
+  - 50: {fileID: 5071960}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -29,6 +31,45 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &5071960
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 158248}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!60 &6082798
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 158248}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: 0.125, y: 0.125}
+      - {x: -0.20833334, y: 0.125}
+      - {x: -0.27083334, y: 0.020833334}
+      - {x: -0.4791667, y: -0.4166667}
+      - {x: -0.4791667, y: -0.5}
+      - {x: 0.39583334, y: -0.5}
+      - {x: 0.39583334, y: -0.2916667}
+      - {x: 0.27083334, y: 0.083333336}
 --- !u!114 &11464790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,6 +135,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: PatrolRange
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_GravityScale
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

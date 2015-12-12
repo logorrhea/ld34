@@ -301,6 +301,7 @@ GameObject:
   - 60: {fileID: 1162418658}
   - 96: {fileID: 1162418659}
   - 58: {fileID: 1162418660}
+  - 50: {fileID: 1162418661}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -361,7 +362,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dceba227e57a7442b02ae5c3cdfefa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraLockTrigger: 0.4
+  MaxRotationAngle: 30
+  RotationSpeed: 1
+  CameraLockTrigger: 5
   Head: {fileID: 1162418654}
   GrowRate: 0.05
   HeightCounter: {fileID: 1927056924}
@@ -371,7 +374,7 @@ PolygonCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1162418654}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -449,6 +452,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.64
+--- !u!50 &1162418661
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1162418654}
+  m_UseAutoMass: 0
+  m_Mass: 1.2867963
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1632061275
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,8 +591,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -115.2, y: -286.6}
-  m_SizeDelta: {x: 85.2, y: 61.97}
+  m_AnchoredPosition: {x: -92.4, y: -286.6}
+  m_SizeDelta: {x: 150.9, y: 61.97}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1927056924
 MonoBehaviour:
@@ -600,7 +620,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 66
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
