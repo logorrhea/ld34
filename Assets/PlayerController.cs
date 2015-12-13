@@ -94,7 +94,6 @@ public class PlayerController : MonoBehaviour
 
     void GrowLeaves()
     {
-        Debug.Log(TimeSinceLastLeaf);
         if (TimeSinceLastLeaf > TimeBetweenLeafSpawn)
         {
             Vector3 pos = Head.transform.position;

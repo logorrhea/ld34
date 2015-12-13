@@ -1170,8 +1170,8 @@ MonoBehaviour:
   CameraLockTrigger: 5
   HeadPrefab: {fileID: 102052, guid: 6d84cb7e3e8a66042a601ce04477cbb6, type: 2}
   Leaf: {fileID: 143614, guid: fecd0417a3229964c9d30b4b99668d74, type: 2}
-  LeafSpawnChance: 66
-  TimeBetweenLeafSpawn: 1
+  LeafSpawnChance: 33
+  TimeBetweenLeafSpawn: 0.3
   GrowRate: 0.05
   HeightCounter: {fileID: 1927056924}
   Spawner: {fileID: 896408329}
