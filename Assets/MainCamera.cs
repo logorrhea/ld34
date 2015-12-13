@@ -27,4 +27,9 @@ public class MainCamera : MonoBehaviour
         Player = player;
         isFollowingPlayer = true;
     }
+
+    void  StopFollowPlayer()
+    {
+        isFollowingPlayer = false;
+    }
 }
