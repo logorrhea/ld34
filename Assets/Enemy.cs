@@ -23,6 +23,9 @@ public class Enemy : MonoBehaviour
         float x = StartX + Mathf.Sin(OscillationOffset + Time.time)*PatrolRange;
         pos.x = Mathf.Lerp(pos.x, x, PatrolSpeed);
         this.transform.position = pos;
+
+        float YRotation = pos.x > x ? 180 : 0;
+        this.transform.eulerAngles = new Vector3(0, YRotation, 0);
     }
 
     void LateUpdate()
