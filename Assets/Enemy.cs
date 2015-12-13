@@ -24,4 +24,15 @@ public class Enemy : MonoBehaviour
         pos.x = Mathf.Lerp(pos.x, x, PatrolSpeed);
         this.transform.position = pos;
     }
+
+    void LateUpdate()
+    {
+        Bounds b = CameraExtensions.OrthographicBounds(Camera.main);
+        Debug.Log("Camera bounds: " + b.min.y); Debug.Log("Position: " +this.transform.position.y);
+        if (this.transform.position.y < b.min.y)
+        {
+            Debug.Log("below camera bounds");
+            Destroy(this.gameObject);
+        }
+    }
 }
