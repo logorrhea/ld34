@@ -31,9 +31,14 @@ public class PlayerController : MonoBehaviour
     bool isCameraLocked = false;
     bool isStopped = false;
 
+    AudioSource DeathSound;
+
     // Use this for initialization
     void Start ()
     {
+        // Get refrence to audio so we can play the clip later
+        DeathSound = GetComponent<AudioSource>();
+
         // Save original position of player and camera
         // Origin = Head.transform.position;
         CameraOrigin = Camera.main.transform.position;
@@ -118,6 +123,9 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
+        // Play death sound
+        DeathSound.Play();
+
         // Tell camera to stop tracking the player
         Camera.main.SendMessage("StopFollowPlayer");
         isCameraLocked = false;
