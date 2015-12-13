@@ -21,10 +21,11 @@ public class PlayerController : MonoBehaviour
     public GameObject Spawner;
 
     public GameObject DeathMenu;
+    public GameObject TitleMenu;
     public Text CurrentRoundHeightText;
     public Text RecordHeightText;
 
-    Vector3 Origin;
+    // Vector3 Origin;
     Vector3 CameraOrigin;
     float LeftBounds, RightBounds;
     bool isCameraLocked = false;
@@ -33,19 +34,14 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        InstantiateHead();
-
         // Save original position of player and camera
-        Origin = Head.transform.position;
+        // Origin = Head.transform.position;
         CameraOrigin = Camera.main.transform.position;
 
         // Get right and left screen bounds
         Bounds bounds = CameraExtensions.OrthographicBounds(Camera.main);
         LeftBounds = bounds.min.x;
         RightBounds = bounds.max.x;
-
-        // Turn off DeathMenu
-        DeathMenu.SetActive(false);
     }
 
     void Update()
@@ -146,11 +142,12 @@ public class PlayerController : MonoBehaviour
         InstantiateHead();
 
         // Reset player and camera positions
-        Head.transform.position = Origin;
+        Head.transform.position = Vector3.zero;
         Camera.main.transform.position = CameraOrigin;
 
         // Turn off DeathMenu
         DeathMenu.SetActive(false);
+        TitleMenu.SetActive(false);
 
         // Unpause game
         GameState.isPaused = false;
