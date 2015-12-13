@@ -8,7 +8,8 @@ public class PlayerController : MonoBehaviour
     public float MaxRotationAngle;
     public float RotationSpeed;
     public float CameraLockTrigger = 0.4f;
-    public GameObject Head;
+    public GameObject HeadPrefab;
+    GameObject Head;
     public GameObject Leaf;
     public float GrowRate;
     public Text HeightCounter;
@@ -27,9 +28,7 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        // Set sorting layer to back
-        TrailRenderer tr = GetComponent<TrailRenderer>();
-        tr.sortingLayerName = "Trail";
+        InstantiateHead();
 
         // Save original position of player and camera
         Origin = Head.transform.position;
@@ -46,7 +45,14 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (!isCameraLocked)
+        if (GameState.isPaused)
+        {
+            if (Input.GetAxis("Submit") > 0)
+            {
+                Restart();
+            }
+        }
+        else if (!isCameraLocked)
         {
             TryLockCamera();
         }
@@ -102,7 +108,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Die()
+    public void Die()
     {
         // Tell camera to stop tracking the player
         Camera.main.SendMessage("StopFollowPlayer");
@@ -120,11 +126,13 @@ public class PlayerController : MonoBehaviour
         DeathMenu.SetActive(true);
 
         // Set self to inactive
-        Head.SetActive(false);
+        Destroy(Head);
     }
 
     public void Restart()
     {
+        InstantiateHead();
+
         // Reset player and camera positions
         Head.transform.position = Origin;
         Camera.main.transform.position = CameraOrigin;
@@ -132,11 +140,18 @@ public class PlayerController : MonoBehaviour
         // Turn off DeathMenu
         DeathMenu.SetActive(false);
 
-        // Set self to active
-        Head.SetActive(true);
-
         // Unpause game
         GameState.isPaused = false;
+    }
+
+    void InstantiateHead()
+    {
+        Head = (GameObject) Instantiate(HeadPrefab, Vector3.zero, Quaternion.identity);
+        Head.SendMessage("SetController", this.gameObject);
+
+        // Set TrailRenderer sorting layer to back
+        TrailRenderer tr = Head.GetComponent<TrailRenderer>();
+        tr.sortingLayerName = "Trail";
     }
 
     void UpdateHeightCounter(float height)
@@ -164,10 +179,5 @@ public class PlayerController : MonoBehaviour
         {
             RecordHeightText.text = "Record Height: " + GameState.RecordHeight.ToString("F2") + "m";
         }
-    }
-
-    void OnTriggerEnter2D(Collider2D Other)
-    {
-        Die();
     }
 }
