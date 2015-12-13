@@ -10,7 +10,12 @@ public class PlayerController : MonoBehaviour
     public float CameraLockTrigger = 0.4f;
     public GameObject HeadPrefab;
     GameObject Head;
+
     public GameObject Leaf;
+    public float LeafSpawnChance;
+    public float TimeBetweenLeafSpawn;
+    float TimeSinceLastLeaf = 0.0f;
+
     public float GrowRate;
     public Text HeightCounter;
     public GameObject Spawner;
@@ -89,12 +94,20 @@ public class PlayerController : MonoBehaviour
 
     void GrowLeaves()
     {
-        // @TODO: Occasionally grow leafy bits based on change in height/random chance
-        Vector3 pos = Head.transform.position;
-        int rand = Random.Range(1, 101);
-        if (rand > 98) // 2% chance to spawn a leaf on a given frame
+        Debug.Log(TimeSinceLastLeaf);
+        if (TimeSinceLastLeaf > TimeBetweenLeafSpawn)
         {
-            Instantiate(Leaf, pos, Quaternion.identity);
+            Vector3 pos = Head.transform.position;
+            int rand = Random.Range(1, 101);
+            if (rand <= LeafSpawnChance)
+            {
+                Instantiate(Leaf, pos, Quaternion.identity);
+            }
+            TimeSinceLastLeaf = 0.0f;
+        }
+        else
+        {
+            TimeSinceLastLeaf += Time.deltaTime;
         }
     }
 
