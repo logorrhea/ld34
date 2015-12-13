@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using UnityEditor;
 
 public class NewBehaviourScript : EditorWindow
@@ -9,3 +10,4 @@ public class NewBehaviourScript : EditorWindow
         PlayerPrefs.DeleteAll();
     }
 }
+#endif
