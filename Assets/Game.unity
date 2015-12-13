@@ -706,6 +706,7 @@ MonoBehaviour:
   RotationSpeed: 1
   CameraLockTrigger: 5
   Head: {fileID: 1162418654}
+  Leaf: {fileID: 143614, guid: fecd0417a3229964c9d30b4b99668d74, type: 2}
   GrowRate: 0.05
   HeightCounter: {fileID: 1927056924}
   Spawner: {fileID: 896408329}

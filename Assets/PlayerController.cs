@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float RotationSpeed;
     public float CameraLockTrigger = 0.4f;
     public GameObject Head;
+    public GameObject Leaf;
     public float GrowRate;
     public Text HeightCounter;
     public GameObject Spawner;
@@ -79,6 +80,12 @@ public class PlayerController : MonoBehaviour
     void GrowLeaves()
     {
         // @TODO: Occasionally grow leafy bits based on change in height/random chance
+        Vector3 pos = Head.transform.position;
+        int rand = Random.Range(1, 101);
+        if (rand > 98) // 2% chance to spawn a leaf on a given frame
+        {
+            Instantiate(Leaf, pos, Quaternion.identity);
+        }
     }
 
     void TryLockCamera()
