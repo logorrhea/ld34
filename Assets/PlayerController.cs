@@ -27,6 +27,10 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
+        // Set sorting layer to back
+        TrailRenderer tr = GetComponent<TrailRenderer>();
+        tr.sortingLayerName = "Trail";
+
         // Save original position of player and camera
         Origin = Head.transform.position;
         CameraOrigin = Camera.main.transform.position;

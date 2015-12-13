@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Trail
+    uniqueID: 3720038569
+    locked: 0
+  - name: Leaves
+    uniqueID: 2444467857
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
