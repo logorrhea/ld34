@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Clouds
+    uniqueID: 974125981
+    locked: 0
   - name: Trail
     uniqueID: 3720038569
     locked: 0
