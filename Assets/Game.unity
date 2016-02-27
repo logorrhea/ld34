@@ -1380,7 +1380,9 @@ MonoBehaviour:
   Units:
   - {fileID: 166298, guid: 2dd4dc733fd871444a3f3a19b4d74622, type: 2}
   SpawnPoint: {fileID: 896408330}
-  SpawnRate: 1
+  SpawnRate: 1.5
+  EnemyCap: 3
+  EnemyCapIncreaseRate: 10
 --- !u!1 &936424508
 GameObject:
   m_ObjectHideFlags: 0

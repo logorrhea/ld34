@@ -32,7 +32,9 @@ Release
 # emacs and vim tmp files
 *~
 \#*\#
+\.\#*
 *.swp
 *.swp
 *.swo
 *.suo
+*.zip
